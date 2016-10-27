@@ -8,6 +8,7 @@ import {
 import { connect } from 'react-redux';
 import Header from '../component/header.component'
 import Input from '../component/input.component'
+import ChatList from '../component/listView.component'
 
 
 window.navigator.userAgent = "react-native";
@@ -38,12 +39,12 @@ export default class AppContainer extends Component {
     }
 
 	render() {
+	   let self = this;
 		 return (
               <View style={styles.container}>
-              <Header/>
-              <Input/>
-
-
+              <Header {...self.props}/>
+              <ChatList {...self.props}/>
+              <Input {...self.props}/>
               </View>
             );
 	}
@@ -57,7 +58,7 @@ const App = connect(mapStateToProps)(AppContainer);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#EFF0F5'
 
   }
 });
