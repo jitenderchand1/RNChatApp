@@ -3,17 +3,30 @@ import {
     StyleSheet,
     View,
     Text,
-    TextInput
+    TextInput,
+    ListView
 } from 'react-native';
 
 import ButtonComponent from '../component/button.component'
 
+window.navigator.userAgent = "react-native";
+let io = require('socket.io-client/socket.io');
+let url ='http://10.1.21.115:3000';
+
 export default class InputComponent extends Component{
     constructor(props){
-        super(props)
+        super(props);
+        this.state={
+            message:''
+        };
+        this.socket = io(url, {jsonp:false});
     }
-    sendDelayInformation(){
 
+    sendDelayInformation(data){
+        this.socket.emit('send message', data);
+        this.setState({
+            message:''
+        });
     }
 
     render(){
@@ -25,11 +38,12 @@ export default class InputComponent extends Component{
                             style={styles.reasonDetails}
                             placeholder="Write your Message"
                             numberOfLines = {2}
-
-                            />
+                                    onChangeText={(message) => this.setState({ message }) }
+                                    value={this.state.message}
+                          />
                     </View>
                     <View style={styles.button}>
-                    <ButtonComponent buttonText="SEND" buttonClick={self.sendDelayInformation.bind(self) }/>
+                    <ButtonComponent buttonText="SEND" buttonClick={self.sendDelayInformation.bind(self, this.state.message) }/>
                     </View>
                 </View>
             )
