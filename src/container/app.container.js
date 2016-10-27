@@ -2,28 +2,43 @@ import React, {Component} from 'react';
 import {
 	Text,
 	View,
-	StyleSheet
+	StyleSheet,
+    TouchableHighlight
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import io from 'socket.io-client/socket.io';
-import socket from './userAgent';
-
+window.navigator.userAgent = "react-native";
+let io = require('socket.io-client/socket.io');
+let url ='http://10.1.21.115:3000';
 
 export default class AppContainer extends Component {
    constructor(props){
     super(props)
-
+       this.state={
+           hell:''
+       };
+       this.socket = io(url, {jsonp:false});
    }
     componentDidMount () {
-
+        this.socket.on('new message', function(msgObj){
+            this.setState({
+                hell:msgObj
+            });
+        });
 
       }
+
+    async hell(){
+        console.log("in hell...")
+        this.socket.emit('send message', 'first')
+    }
 
 	render() {
 		 return (
               <View style={styles.container}>
-                <Text style={styles.welcome}>
+                  <TouchableHighlight onPress={()=> this.hell()}><Text>hellooooooo</Text></TouchableHighlight>
+
+                  <Text style={styles.welcome}>
                   Welcome to React Native!
                 </Text>
                 <Text style={styles.instructions}>
@@ -33,6 +48,7 @@ export default class AppContainer extends Component {
                   Double tap R on your keyboard to reload,{'\n'}
                   Shake or press menu button for dev menu
                 </Text>
+
               </View>
             );
 	}
