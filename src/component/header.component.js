@@ -18,7 +18,6 @@ export default class HeaderComponent extends Component{
                     <Text>RN</Text>
                 </View>
             </View>
-
         )
       }
 }
@@ -37,7 +36,7 @@ var styles = StyleSheet.create({
     width:30,
     borderColor:'#fff',
     borderWidth:1,
-    alignSelf:''
+    alignSelf:'center'
   }
 
 })
