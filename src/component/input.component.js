@@ -47,13 +47,14 @@ export default class InputComponent extends Component{
                     </View>
                 </View>
             )
-          }
-
-}
+       }
+    }
 
 var styles=StyleSheet.create({
     container : {
-        flexDirection:'row'
+        flexDirection:'row',
+        position:'absolute',
+        bottom:10
     },
     reasonDetails: {
         backgroundColor: '#fff',
@@ -63,6 +64,7 @@ var styles=StyleSheet.create({
       reasonDetailsContainer: {
         borderWidth: 1,
         borderColor: '#dddddd',
+        backgroundColor: '#fff',
         flex:1,
         marginLeft: 10,
         marginRight:10,

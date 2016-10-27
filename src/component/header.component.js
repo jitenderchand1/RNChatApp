@@ -15,7 +15,7 @@ export default class HeaderComponent extends Component{
         return (
             <View style={styles.header}>
                 <View style={styles.logo}>
-                    <Text>RN</Text>
+                    <Text style={styles.logoText}>RN</Text>
                 </View>
             </View>
         )
@@ -25,18 +25,26 @@ export default class HeaderComponent extends Component{
 
 var styles = StyleSheet.create({
   header:{
-    height:40,
+    height:45,
     backgroundColor:'#31374F',
     marginTop:23,
     justifyContent:'center'
   },
   logo:{
-    borderRadius:15,
-    height:30,
-    width:30,
+    borderRadius:17.5,
+    height:35,
+    width:35,
     borderColor:'#fff',
     borderWidth:1,
-    alignSelf:'center'
+    alignSelf:'center',
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  logoText:{
+    textAlign:'center',
+    color:'#fff',
+    width:20
+
   }
 
 })
