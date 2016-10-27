@@ -104,10 +104,21 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+
+     signingConfigs {
+                release {
+                    storeFile file("RNChat.keystore")
+                    storePassword "RNChat"
+                    keyAlias "RNChat"
+                    keyPassword "RNChat"
+                }
+            }
+
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
