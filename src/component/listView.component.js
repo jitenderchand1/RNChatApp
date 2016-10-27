@@ -20,11 +20,13 @@ class ChatListComponent extends Component{
             }
     }
 
+    
+
     renderList(data){
      return (
         <View style={styles.bottom}>
         <View style={styles.chatBox}>
-            <Text>{data}</Text>
+            <Text>{data.msg}</Text>
         </View>
         </View>
      )

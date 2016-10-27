@@ -14,22 +14,24 @@ window.navigator.userAgent = "react-native";
 let io = require('socket.io-client/socket.io');
 let url ='http://10.1.0.207:3000';
 
+let socket = io(url, {jsonp:false});
+
 class InputComponent extends Component{
     constructor(props){
         super(props);
         this.state={
             message:''
         };
-        this.socket = io(url, {jsonp:false});
     }
 
     sendChatInformation(data){
-        this.socket.emit('send message', data);
+        socket.emit('send message', data);
         this.setState({
             message:''
         });
-        this.socket.on('new message', (msObj)=>{
+        socket.on('new message', (msObj)=>{
            this.props.dispatch(setPropertyDetail(msObj));
+            console.log("jjjjjjj",this.props );
         })
     }
 
