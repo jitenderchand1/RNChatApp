@@ -7,16 +7,16 @@ import {
     ScrollView
 } from 'react-native';
 
+import { connect } from 'react-redux';
 
-export default class ChatListComponent extends Component{
+class ChatListComponent extends Component{
     constructor(props){
         super(props)
         let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-        let list =[
-            "asfdasfd","asfasfdsafafd"
-        ]
+        let list =[...this.props.chat.chatHistory];
+        console.log("likhkjhk",list);
             this.state = {
-              chats: ds.cloneWithRows(list)
+              chats: ds.cloneWithRows(list || [])
             }
     }
 
@@ -61,3 +61,9 @@ var styles=StyleSheet.create({
 
     }
 })
+
+const mapStateToProps = function (state) {
+    return state;
+}
+const ChatList = connect(mapStateToProps)(ChatListComponent);
+export default ChatList;

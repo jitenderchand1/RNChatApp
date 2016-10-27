@@ -3,13 +3,13 @@ export const SET_CHAT = 'SET_CHAT';
 
 export function getPropertyDetails() {
     return {
-        type: SET_CHAT
+        type: GET_CHAT
     }
 }
 
 export function setPropertyDetail(chat) {
     return {
-        type: GET_CHAT,
+        type: SET_CHAT,
         chat
     }
 }

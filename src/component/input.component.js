@@ -7,13 +7,14 @@ import {
     ListView
 } from 'react-native';
 
+import { connect } from 'react-redux';
 import ButtonComponent from '../component/button.component'
-
+import {setPropertyDetail} from '../actions/chat.action'
 window.navigator.userAgent = "react-native";
 let io = require('socket.io-client/socket.io');
 let url ='http://10.1.21.115:3000';
 
-export default class InputComponent extends Component{
+class InputComponent extends Component{
     constructor(props){
         super(props);
         this.state={
@@ -27,6 +28,9 @@ export default class InputComponent extends Component{
         this.setState({
             message:''
         });
+        this.socket.on('new message', (msObj)=>{
+           this.props.dispatch(setPropertyDetail(msObj));
+        })
     }
 
     render(){
@@ -78,3 +82,9 @@ var styles=StyleSheet.create({
       }
 
 })
+
+const mapStateToProps = function (state) {
+    return state;
+}
+const InputComponentData = connect(mapStateToProps)(InputComponent);
+export default InputComponentData;
