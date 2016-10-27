@@ -22,6 +22,11 @@ class InputComponent extends Component{
         this.state={
             message:''
         };
+        socket.on('new message', (msObj)=>{
+
+            this.props.dispatch(setPropertyDetail(msObj));
+            console.log("jjjjjjj",this.props );
+        })
     }
 
     sendChatInformation(data){
@@ -29,10 +34,7 @@ class InputComponent extends Component{
         this.setState({
             message:''
         });
-        socket.on('new message', (msObj)=>{
-           this.props.dispatch(setPropertyDetail(msObj));
-            console.log("jjjjjjj",this.props );
-        })
+
     }
 
     render(){
