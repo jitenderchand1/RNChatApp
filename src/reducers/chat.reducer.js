@@ -12,8 +12,6 @@ const navigationReducer = function(state = initialState, action) {
     case actions.SET_CHAT:{
       return Object.assign({}, state, {chatHistory: [...state.chatHistory,action.chat]})
     }
-    case actions.GET_CHAT:
-      return Object.assign({}, state, {chatHistory: state.chatHistory})
     case actions.SET_USER:
       return Object.assign({}, state, {user: action.user})
     default:

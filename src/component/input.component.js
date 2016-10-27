@@ -24,7 +24,6 @@ class InputComponent extends Component{
         };
         socket.on('new message', (msObj)=>{
             this.props.dispatch(setChat(msObj));
-            console.log("jjjjjjj",this.props );
         })
     }
 
