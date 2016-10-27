@@ -11,7 +11,7 @@ import Input from '../component/input.component'
 import ChatList from '../component/listView.component'
 
 
-export default class AppContainer extends Component {
+class AppContainer extends Component {
     constructor(props){
         super(props);
     }
@@ -31,10 +31,8 @@ export default class AppContainer extends Component {
     }
 }
 
-const mapStateToProps = function (state) {
-    return state;
-}
-const App = connect(mapStateToProps)(AppContainer);
+
+export default connect()(AppContainer);
 
 const styles = StyleSheet.create({
     container: {
