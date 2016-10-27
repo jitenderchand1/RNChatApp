@@ -28,16 +28,12 @@ class InputComponent extends Component{
     }
 
     componentDidMount(){
-        console.log(socket)
         this.props.dispatch(setUser(socket))
     }
 
     sendChatInformation(data){
-        socket.emit('send message', data);
-        this.setState({
-            message:''
-        });
-
+        socket.emit('send message', this.refs.INPUT_VAL._lastNativeText);
+        this.refs.INPUT_VAL.setNativeProps({text: ''})
     }
 
     render(){
@@ -45,16 +41,15 @@ class InputComponent extends Component{
             return (
                 <View style={styles.container}>
                     <View style={styles.reasonDetailsContainer}>
-                        <TextInput  multiline = {true}
+                        <TextInput ref={'INPUT_VAL'} multiline = {true}
                             style={styles.reasonDetails}
                             placeholder="Write your Message"
                             numberOfLines = {2}
-                                    onChangeText={(message) => this.setState({ message }) }
-                                    value={this.state.message}
+
                           />
                     </View>
                     <View style={styles.button}>
-                    <ButtonComponent buttonText="SEND" buttonClick={self.sendChatInformation.bind(self, this.state.message) }/>
+                    <ButtonComponent buttonText="SEND" buttonClick={self.sendChatInformation.bind(self) }/>
                     </View>
                 </View>
             )
