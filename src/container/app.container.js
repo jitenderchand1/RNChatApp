@@ -8,6 +8,9 @@ import {
     ListView
 } from 'react-native';
 import { connect } from 'react-redux';
+import Header from '../component/header.component'
+import Input from '../component/input.component'
+
 
 window.navigator.userAgent = "react-native";
 let io = require('socket.io-client/socket.io');
@@ -41,59 +44,28 @@ export default class AppContainer extends Component {
         })
     }
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <View style={{flex: 1}}>
-                    <View style={{flex: .8}}>
-                        <ListView
-                            dataSource={this.state.data} enableEmptySections={true}
-                            renderRow={(rowData) => (
-                                 <View style={styles.item}>
-                                  <View style={styles.row}>
-                                   <Text>{rowData}</Text>
-                                    </View>
-                                     </View>
-                                     ) } />
-                    </View>
-                    <View style={{flex: .2}}>
-                        <TextInput
-                            style={styles.textEdit}
-                            onChangeText={(moreText) => this.setState({moreText})}
-                        />
-                        <TouchableHighlight onPress={()=> this.hell(this.state.)}><Text>Done</Text></TouchableHighlight>
-                    </View>
-                </View>
-            </View>
-        );
-    }
+	render() {
+		 return (
+              <View style={styles.container}>
+              <Header/>
+              <Input/>
+
+
+              </View>
+            );
+	}
 }
 
 const mapStateToProps = function (state) {
-    return state;
+	return state;
 }
 const App = connect(mapStateToProps)(AppContainer);
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-    textEdit: {
-       width:100,
-        height:100
-    }
+  container: {
+    flex: 1,
+    backgroundColor: '#F5FCFF'
+
+  }
 });
 
