@@ -23,9 +23,7 @@ class InputComponent extends Component{
             message:''
         };
         socket.on('new message', (msObj)=>{
-
             this.props.dispatch(setPropertyDetail(msObj));
-            console.log("jjjjjjj",this.props );
         })
     }
 

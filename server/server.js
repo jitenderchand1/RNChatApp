@@ -4,19 +4,9 @@ var io = require('socket.io')(http);
 
 var connections=[];
 
-// io= io.listen(http);
-
 io.on('connection', function(socket){
     connections.push(socket);
-    console.log('connection....', socket.id);
-
-    // socket.on('disconnect', function(data){
-    //     console.log("disconnect..")
-    //     connections.splice(connections.indexOf(socket), 1);
-    // })
-
     socket.on('send message', function(msg){
-        console.log("in send message", msg);
         var id=socket.id;
         io.emit('new message', {msg, id});
     });
