@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {
-	Text,
-	View,
-	StyleSheet,
+    Text,
+    View,
+    StyleSheet,
     TouchableHighlight
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -11,31 +11,13 @@ import Input from '../component/input.component'
 import ChatList from '../component/listView.component'
 
 
-window.navigator.userAgent = "react-native";
-let io = require('socket.io-client/socket.io');
-
-let url ='http://10.1.21.178:3000';
-
 export default class AppContainer extends Component {
-   constructor(props){
-    super(props)
-       this.state={
-           hell:''
-       };
-       this.socket = io(url, {jsonp:false});
-   }
-    componentDidMount () {
-        this.socket.on('new message', function(msgObj){
-            this.setState({
-                hell:msgObj
-            });
-        });
+    constructor(props){
+        super(props);
+    }
 
-      }
-
-    async hell(){
-        console.log("in hell...")
-        this.socket.emit('send message', 'first')
+    componentWillUnmount(){
+        socket.emit('disconnect');
     }
 
 	render() {
