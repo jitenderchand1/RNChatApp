@@ -22,8 +22,10 @@ export default class ChatListComponent extends Component{
 
     renderList(data){
      return (
+        <View style={styles.bottom}>
         <View style={styles.chatBox}>
             <Text>{data}</Text>
+        </View>
         </View>
      )
 
@@ -32,7 +34,7 @@ export default class ChatListComponent extends Component{
     render(){
             return(
             <ScrollView style={styles.scroll}>
-                <View>
+                <View style={styles.child}>
                     <ListView
                             enableEmptySections={true}
                             initialListSize={8}
@@ -49,15 +51,22 @@ export default class ChatListComponent extends Component{
 
 var styles=StyleSheet.create({
     scroll:{
-        height:100
+    flex:1,
+    height:500
     },
+    child:{
+        justifyContent:'flex-end',
+        flex:1
+    },
+
     chatBox: {
         backgroundColor:'#fff',
         width:300,
         padding:10,
         margin:5,
         alignSelf:'flex-end',
-        borderRadius:6
-
+        borderRadius:6,
+        borderColor:'#EFF0F5',
+        borderWidth:1
     }
 })
