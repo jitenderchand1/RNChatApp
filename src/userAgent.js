@@ -5,10 +5,9 @@ if (!window.location) {
 
 // This must be below your `window.navigator` hack above
 const io = require('socket.io-client/socket.io');
-const socket = io('http://chat.feathersjs.com', {
+const socket = io('http://10.1.21.178:3000', {
   transports: ['websocket'] // you need to explicitly tell it to use websockets
 });
 
-socket.on('connect', () => {
-  console.log('connected!');
-});
+
+module.exports = socket;
