@@ -13,7 +13,7 @@ export default class ChatListComponent extends Component{
         super(props)
         let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
         let list =[
-            "asfdasfd","asfasfdsafafd"
+            "asfdasfd","asfasfdsafafd",'asdfasdfa'
         ]
             this.state = {
               chats: ds.cloneWithRows(list)
@@ -34,15 +34,14 @@ export default class ChatListComponent extends Component{
     render(){
             return(
             <ScrollView style={styles.scroll}>
-                <View style={styles.child}>
+
                     <ListView
                             enableEmptySections={true}
-                            initialListSize={8}
                             dataSource={this.state.chats}
                             renderRow={(data,sec,key) => {
                             return this.renderList(data);
                             } } />
-                </View>
+
                 </ScrollView>
             )
         }
