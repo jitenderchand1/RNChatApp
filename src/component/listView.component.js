@@ -28,10 +28,13 @@ class ChatListComponent extends Component{
     }
 
     renderList(data){
+      let user = this.props.chat.user.id;
+      console.log(user)
+      console.log(data.id)
      return (
         <View style={styles.bottom}>
-        <View style={styles.chatBox}>
-            <Text>{data.msg}</Text>
+        <View style={user!=data.id?styles.chatBox:styles.userChatBox}>
+            <Text style={user==data.id?styles.userChatText:styles.chatText}>{data.msg}</Text>
         </View>
         </View>
      )
@@ -63,17 +66,33 @@ var styles=StyleSheet.create({
     child:{
         justifyContent:'flex-end',
         flex:1
-    },
-
+        },
     chatBox: {
         backgroundColor:'#fff',
         width:300,
         padding:10,
         margin:5,
+        alignSelf:'flex-start',
+        borderRadius:6
+    },
+    userChatBox: {
+        backgroundColor:'#0084FF',
+        width:300,
+        padding:10,
+        margin:5,
         alignSelf:'flex-end',
         borderRadius:6
+        },
+     chatText:{
+        fontWeight:'bold',
+        fontStyle:'italic'
+     },
+     userChatText:{
+        color:'#fff',
+        fontWeight:'bold',
+        fontStyle:'italic'
+     }
 
-    }
 })
 
 const mapStateToProps = function (state) {

@@ -9,7 +9,7 @@ import {
 
 import { connect } from 'react-redux';
 import ButtonComponent from '../component/button.component'
-import {setPropertyDetail} from '../actions/chat.action'
+import {setChat, setUser} from '../actions/chat.action'
 window.navigator.userAgent = "react-native";
 let io = require('socket.io-client/socket.io');
 let url ='http://10.1.0.207:3000';
@@ -23,10 +23,14 @@ class InputComponent extends Component{
             message:''
         };
         socket.on('new message', (msObj)=>{
-
-            this.props.dispatch(setPropertyDetail(msObj));
+            this.props.dispatch(setChat(msObj));
             console.log("jjjjjjj",this.props );
         })
+    }
+
+    componentDidMount(){
+        console.log(socket)
+        this.props.dispatch(setUser(socket))
     }
 
     sendChatInformation(data){
@@ -62,7 +66,7 @@ var styles=StyleSheet.create({
     container : {
         flexDirection:'row',
         position:'absolute',
-        bottom:10
+        bottom:20
     },
     reasonDetails: {
         backgroundColor: '#fff',
