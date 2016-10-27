@@ -27,3 +27,7 @@ It needs to be like this `let url ='http://{your ip here}:3000';`
 
 # Running the Server for socket communication
 * In a new terminal window, run `node server/server.js` (_this will start up a node server which will communicate with our app_)
+
+
+
+> Note: Currently there is a known issue where while typing with the native device keyboard, the input hides behind the keyboard, This can be bypassed by using the machine's keyboard instead.
