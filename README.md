@@ -8,9 +8,10 @@ Simple socket based chat application
 * move into the project directory `cd RNChatApp`
 * Run `npm install` to install the dependencies
 
-> We also need to update the codebase with current `IP` of the system. (_you can find out by doing `ifconfig_).
+> We also need to update the codebase with current `IP` of the system. (_you can find out by doing `ifconfig`_).
 
 The IP needs to be updated inside the `src/component/input.component.js` (_line 15_)
+
 It needs to be like this `let url ='http://{your ip here}:3000';`
 
 
