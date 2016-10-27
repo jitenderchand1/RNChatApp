@@ -14,13 +14,18 @@ class ChatListComponent extends Component{
         super(props)
         let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
         let list =[...this.props.chat.chatHistory];
-        console.log("likhkjhk",list);
             this.state = {
               chats: ds.cloneWithRows(list || [])
             }
     }
 
-    
+    componentWillReceiveProps(props){
+        let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+        let list =[...props.chat.chatHistory];
+        this.state = {
+          chats: ds.cloneWithRows(list || [])
+        }
+    }
 
     renderList(data){
      return (
@@ -36,7 +41,6 @@ class ChatListComponent extends Component{
     render(){
             return(
             <ScrollView style={styles.scroll}>
-
                     <ListView
                             enableEmptySections={true}
                             initialListSize={8}
