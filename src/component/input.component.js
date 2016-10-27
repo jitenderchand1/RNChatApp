@@ -11,8 +11,10 @@ import { connect } from 'react-redux';
 import ButtonComponent from '../component/button.component'
 import {setPropertyDetail} from '../actions/chat.action'
 window.navigator.userAgent = "react-native";
+
 let io = require('socket.io-client/socket.io');
 let url ='http://10.1.21.115:3000';
+let socket = io(url, {jsonp:false});
 
 class InputComponent extends Component{
     constructor(props){
@@ -20,16 +22,16 @@ class InputComponent extends Component{
         this.state={
             message:''
         };
-        this.socket = io(url, {jsonp:false});
     }
 
     sendDelayInformation(data){
-        this.socket.emit('send message', data);
+        socket.emit('send message', data);
         this.setState({
             message:''
         });
-        this.socket.on('new message', (msObj)=>{
+        socket.on('new message', (msObj)=>{
            this.props.dispatch(setPropertyDetail(msObj));
+            console.log("jjjjjjj",this.props );
         })
     }
 

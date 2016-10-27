@@ -15,18 +15,13 @@ export default class AppContainer extends Component {
     constructor(props){
         super(props);
     }
-
-    componentWillUnmount(){
-        socket.emit('disconnect');
-    }
-
 	render() {
 	   let self = this;
 		 return (
               <View style={styles.container}>
-              <Header {...self.props}/>
-              <ChatList {...self.props}/>
-              <Input {...self.props}/>
+              <Header/>
+              <ChatList/>
+              <Input/>
               </View>
             );
 	}
